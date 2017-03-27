@@ -31,8 +31,11 @@ ShowIp.prototype.onReadRequest = function(offset, callback) {
   console.log('hey!! somebody is trying to read the ip')
   console.log(arguments);
 
-  var data = new Buffer(2);
+  var data = new Buffer(4);
   data.writeUInt16BE(32, 0);
+  data.writeUInt16BE(45, 1);
+  data.writeUInt16BE(63, 2);
+  data.writeUInt16BE(201, 3);
   console.log('make data', data);
   callback(this.RESULT_SUCCESS, data);
   console.log('made the callback')
