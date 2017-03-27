@@ -1,6 +1,7 @@
 var util = require('util');
 var bleno = require('../..');
 var pizza = require('./pizza');
+var ip = require('ip');
 
 var toByteArray = function(dataString) {
   var data = new Uint8Array(dataString.length);
@@ -37,7 +38,7 @@ ShowIp.prototype.onReadRequest = function(offset, callback) {
   data.writeUInt16BE(63, 2);
   data.writeUInt16BE(201, 3);*/
 
-  var data = toByteArray("this is an ip")
+  var data = toByteArray(ip.address() + "")
 
   console.log('make data', data);
   callback(this.RESULT_SUCCESS, data);
