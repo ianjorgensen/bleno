@@ -6,7 +6,7 @@ var WiFiControl = require('wifi-control');
 //  Initialize wifi-control package with verbose output
 WiFiControl.init({
   debug: true,
-  iface: 'en0'
+  iface: 'wlan0'
 });
 
 function bin2String(array) {
