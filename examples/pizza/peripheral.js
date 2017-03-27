@@ -22,7 +22,7 @@ var PizzaService = require('./pizza-service');
 //
 // A name to advertise our Pizza Service.
 //
-var name = 'PizzaSquat';
+var name = 'Zoetis Brick';
 var pizzaService = new PizzaService(new pizza.Pizza());
 
 //

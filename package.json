@@ -38,7 +38,9 @@
     "node-blink1": "~0.2.2"
   },
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "node-ip": "^0.1.2",
+    "node-wifi": "^1.2.4"
   },
   "optionalDependencies": {
     "bluetooth-hci-socket": "^0.5.1",
