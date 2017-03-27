@@ -3,7 +3,7 @@ var WiFiControl = require('wifi-control');
 //  Initialize wifi-control package with verbose output
 WiFiControl.init({
   debug: true,
-  iface: 'wlan0'
+  iface: 'en0'
 });
 
 //  Try scanning for access points:

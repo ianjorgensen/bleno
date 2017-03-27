@@ -1,6 +1,13 @@
 var util = require('util');
 var bleno = require('../..');
 var pizza = require('./pizza');
+var WiFiControl = require('wifi-control');
+
+//  Initialize wifi-control package with verbose output
+WiFiControl.init({
+  debug: true,
+  iface: 'en0'
+});
 
 function bin2String(array) {
   var result = "";
@@ -28,8 +35,15 @@ function SetWifi(pizza) {
 util.inherits(SetWifi, bleno.Characteristic);
 
 SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+  var creds = bin2String(data);
+
+  WiFiControl.connectToAP( { ssid: creds.split(',')[0], password: creds.split(',')[1] }, function(err, response) {
+    if (err) console.log('err', err);
+    console.log('response', response);
+  });
+
   console.log('got wifi info',data);
-  console.log('string of data:', bin2String(data))
+  console.log('string of data:', creds)
   callback(this.RESULT_SUCCESS);
 };
 
