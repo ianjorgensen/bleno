@@ -13,7 +13,7 @@ var toByteArray = function(dataString) {
 
 function ShowIp(pizza) {
   bleno.Characteristic.call(this, {
-    uuid: '13333333333333333333333333330002',
+    uuid: '13333333333333333333333333330002', // 13333333-3333-3333-3333-333333330002
     properties: ['read'],
     descriptors: [
       new bleno.Descriptor({

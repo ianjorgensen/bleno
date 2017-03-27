@@ -6,7 +6,7 @@ var ShowIp = require('./showIp');
 
 function PizzaService(pizza) {
     bleno.PrimaryService.call(this, {
-        uuid: '13333333333333333333333333333337',
+        uuid: '13333333333333333333333333333337', // 13333333-3333-3333-3333-333333333337
         characteristics: [
             new SetWifi(pizza),
             new ShowIp(pizza)

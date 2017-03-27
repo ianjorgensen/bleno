@@ -12,7 +12,7 @@ function bin2String(array) {
 
 function SetWifi(pizza) {
   bleno.Characteristic.call(this, {
-    uuid: '13333333333333333333333333330001',
+    uuid: '13333333333333333333333333330001', // 13333333-3333-3333-3333-333333330001
     properties: ['write'],
     descriptors: [
       new bleno.Descriptor({
