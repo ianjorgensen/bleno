@@ -28,6 +28,8 @@ function ShowIp(pizza) {
 util.inherits(ShowIp, bleno.Characteristic);
 
 ShowIp.prototype.onReadRequest = function(offset, callback) {
+  console.log('hey!! somebody is trying to read the ip')
+  console.log(arguments);
   if (offset) {
     callback(this.RESULT_ATTR_NOT_LONG, null);
   }
