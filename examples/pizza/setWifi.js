@@ -41,11 +41,16 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
   var ss = { ssid: creds.split(',')[0], password: creds.split(',')[1] };
 
   console.log(ss);
-  WiFiControl.connectToAP(ss , function(err, response) {
-    if (err) console.log('err', err);
-    console.log('response', response);
-  });
 
+  WiFiControl.resetWiFi( function(err, response) {
+   if (err) console.log(err);
+   console.log(response);
+
+   WiFiControl.connectToAP(ss , function(err, response) {
+     if (err) console.log('err', err);
+     console.log('response', response);
+   });
+ } );
 
   callback(this.RESULT_SUCCESS);
 };
