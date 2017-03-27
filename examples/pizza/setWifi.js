@@ -36,14 +36,17 @@ util.inherits(SetWifi, bleno.Characteristic);
 
 SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   var creds = bin2String(data);
+  console.log('got wifi info',data);
+  console.log('string of data:', creds)
+  var ss = { ssid: creds.split(',')[0], password: creds.split(',')[1] };
 
-  WiFiControl.connectToAP( { ssid: creds.split(',')[0], password: creds.split(',')[1] }, function(err, response) {
+  console.log(ss);
+  WiFiControl.connectToAP(ss , function(err, response) {
     if (err) console.log('err', err);
     console.log('response', response);
   });
 
-  console.log('got wifi info',data);
-  console.log('string of data:', creds)
+
   callback(this.RESULT_SUCCESS);
 };
 
