@@ -32,7 +32,7 @@ ShowIp.prototype.onReadRequest = function(offset, callback) {
   console.log(arguments);
 
   var data = new Buffer(2);
-  data.writeUInt16BE(this.pizza.toppings, 0);
+  data.writeUInt16BE(32, 0);
   console.log('make data', data);
   callback(this.RESULT_SUCCESS, data);
   console.log('made the callback')
