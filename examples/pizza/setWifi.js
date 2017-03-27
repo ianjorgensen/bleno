@@ -30,7 +30,7 @@ util.inherits(SetWifi, bleno.Characteristic);
 SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   console.log('got wifi info',data);
   console.log('string of data:', bin2String(data))
-  
+  callback(this.RESULT_SUCCESS);
 };
 
 module.exports = SetWifi;
