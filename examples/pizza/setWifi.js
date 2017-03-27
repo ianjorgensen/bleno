@@ -35,7 +35,7 @@ function SetWifi(pizza) {
 util.inherits(SetWifi, bleno.Characteristic);
 
 SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-  var creds = bin2String(data).split('\u000e')[0];
+  var creds = bin2String(data);
   console.log('got wifi info', data);
   console.log('string of data:', creds);
   var ss = { ssid: creds.split(',')[0], password: creds.split(',')[1] };
