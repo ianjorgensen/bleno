@@ -33,7 +33,9 @@ ShowIp.prototype.onReadRequest = function(offset, callback) {
 
   var data = new Buffer(2);
   data.writeUInt16BE(this.pizza.toppings, 0);
+  console.log('make data')
   callback(this.RESULT_SUCCESS, data);
+  console.log('made the callback')
 };
 
 module.exports = ShowIp;
