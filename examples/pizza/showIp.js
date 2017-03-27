@@ -32,9 +32,9 @@ ShowIp.prototype.onReadRequest = function(offset, callback) {
     callback(this.RESULT_ATTR_NOT_LONG, null);
   }
   else {
-    //var data = new Buffer(2);
-    //data.writeUInt16BE(this.pizza.toppings, 0);
-    callback(this.RESULT_SUCCESS, toByteArray("hello this is an ip"));
+    var data = new Buffer(2);
+    data.writeUInt16BE(this.pizza.toppings, 0);
+    callback(this.RESULT_SUCCESS, data);
   }
 };
 
