@@ -28,17 +28,9 @@ function SetWifi(pizza) {
 util.inherits(SetWifi, bleno.Characteristic);
 
 SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-  if (offset) {
-    callback(this.RESULT_ATTR_NOT_LONG);
-  }
-  else if (data.length !== 1) {
-    callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
-  }
-  else {
-    var crust = data.readUInt8(0);
-    console.log('got wifi info',data);
-    console.log('string of data:', bin2String(data))
-  }
+  console.log('got wifi info',data);
+  console.log('string of data:', bin2String(data))
+  
 };
 
 module.exports = SetWifi;
