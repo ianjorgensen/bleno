@@ -30,14 +30,10 @@ util.inherits(ShowIp, bleno.Characteristic);
 ShowIp.prototype.onReadRequest = function(offset, callback) {
   console.log('hey!! somebody is trying to read the ip')
   console.log(arguments);
-  if (offset) {
-    callback(this.RESULT_ATTR_NOT_LONG, null);
-  }
-  else {
-    var data = new Buffer(2);
-    data.writeUInt16BE(this.pizza.toppings, 0);
-    callback(this.RESULT_SUCCESS, data);
-  }
+
+  var data = new Buffer(2);
+  data.writeUInt16BE(this.pizza.toppings, 0);
+  callback(this.RESULT_SUCCESS, data);
 };
 
 module.exports = ShowIp;
