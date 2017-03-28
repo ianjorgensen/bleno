@@ -49,7 +49,7 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
   if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
     console.log('attempt to connect');
 
-    var cmd = spawn('nmcli', ['d', 'disconnect', 'wlan0']);
+    var ls = spawn('nmcli', ['d', 'disconnect', 'wlan0']);
 
     ls.stdout.on('data', function(data) {
       console.log('stdout:', data);
