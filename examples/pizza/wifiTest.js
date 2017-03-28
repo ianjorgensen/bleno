@@ -12,7 +12,6 @@ WiFiControl.scanForWiFi( function(err, response) {
   console.log(response);
 });
 
-
 var _ap = {
   ssid: "internet",
   password: "getonline"
