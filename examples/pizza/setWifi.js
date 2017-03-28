@@ -58,6 +58,17 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
         if (err) console.log('err', err);
         console.log('response', response);
       });
+
+      exec('nmcli d wifi con "' + ss.ssid +  '" password "' + ss.password + '"', function(error, stdout, stderr) {
+        console.error('connect wifi exec error',error);
+        console.log('connect wifi stdout:', stdout);
+        console.log('connect wifi stderr:', stderr);
+
+        /*WiFiControl.connectToAP(ss , function(err, response) {
+          if (err) console.log('err', err);
+          console.log('response', response);
+        });*/
+      });
     });
   }
 
