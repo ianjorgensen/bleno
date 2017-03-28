@@ -51,15 +51,15 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
 
     var cmd = spawn('nmcli', ['d', 'disconnect', 'wlan0']);
 
-    ls.stdout.on('data', (data) => {
+    ls.stdout.on('data', function(data) {
       console.log(`stdout: ${data}`);
     });
 
-    ls.stderr.on('data', (data) => {
+    ls.stderr.on('data', function(data) {
       console.log(`stderr: ${data}`);
     });
 
-    ls.on('close', (code) => {
+    ls.on('close', function(code) {
       console.log(`child process exited with code ${code}`);
 
       WiFiControl.connectToAP(ss , function(err, response) {
