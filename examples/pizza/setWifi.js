@@ -2,6 +2,7 @@ var util = require('util');
 var bleno = require('../..');
 var pizza = require('./pizza');
 var WiFiControl = require('wifi-control');
+var spawn = require('child_process').spawn;
 
 //  Initialize wifi-control package with verbose output
 WiFiControl.init({
@@ -47,9 +48,24 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
 
   if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
     console.log('attempt to connect');
-    WiFiControl.connectToAP(ss , function(err, response) {
-      if (err) console.log('err', err);
-      console.log('response', response);
+
+    var cmd = spawn('nmcli', ['d', 'disconnect', 'wlan0']);
+
+    ls.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+    });
+
+    ls.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+    });
+
+    ls.on('close', (code) => {
+      console.log(`child process exited with code ${code}`);
+
+      WiFiControl.connectToAP(ss , function(err, response) {
+        if (err) console.log('err', err);
+        console.log('response', response);
+      });
     });
   }
 
