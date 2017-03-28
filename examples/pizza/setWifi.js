@@ -48,12 +48,9 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
 
   if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
     console.log('attempt to connect');
-    
+
     exec('nmcli d disconnect wlan0', function(error, stdout, stderr) {
-      if (error) {
-        console.error('exec error',error);
-        return;
-      }
+      console.error('exec error',error);
       console.log('stdout:', stdout);
       console.log('stderr:', stderr);
 
