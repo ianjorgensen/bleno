@@ -42,12 +42,15 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
 
   console.log(ss);
 
+  var ifaceState = WiFiControl.getIfaceState();
 
-   WiFiControl.connectToAP(ss , function(err, response) {
-     if (err) console.log('err', err);
-     console.log('response', response);
-   });
-
+  if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
+    WiFiControl.connectToAP(ss , function(err, response) {
+      if (err) console.log('err', err);
+      console.log('response', response);
+    });
+  }
+  
   callback(this.RESULT_SUCCESS);
 };
 
