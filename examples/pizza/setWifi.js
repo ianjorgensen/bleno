@@ -46,7 +46,7 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
   var ifaceState = WiFiControl.getIfaceState();
   console.log('ifaceState',ifaceState);
 
-  if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
+  //if (!ifaceState.ssid || ifaceState.ssid != ss.ssid) {
     console.log('attempt to connect');
 
     exec('nmcli d disconnect wlan0', function(error, stdout, stderr) {
@@ -70,7 +70,7 @@ SetWifi.prototype.onWriteRequest = function(data, offset, withoutResponse, callb
         });*/
       });
     });
-  }
+  //}
 
   callback(this.RESULT_SUCCESS);
 };
